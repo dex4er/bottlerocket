@@ -64,13 +64,18 @@ BUILD_ARGS=(
 export GO_VERSION="1.22.2"
 
 go build "${BUILD_ARGS[@]}" -o bin/runsc ./runsc
+go build "${BUILD_ARGS[@]}" -o bin/containerd-shim-runsc-v1 ./shim
+
 gofips build "${BUILD_ARGS[@]}" -o fips/bin/runsc ./runsc
+gofips build "${BUILD_ARGS[@]}" -o fips/bin/containerd-shim-runsc-v1 ./shim
 
 %install
 install -d %{buildroot}%{_cross_bindir}
+install -p -m 0755 bin/containerd-shim-runsc-v1 %{buildroot}%{_cross_bindir}
 install -p -m 0755 bin/runsc %{buildroot}%{_cross_bindir}
 
 install -d %{buildroot}%{_cross_fips_bindir}
+install -p -m 0755 fips/bin/containerd-shim-runsc-v1 %{buildroot}%{_cross_fips_bindir}
 install -p -m 0755 fips/bin/runsc %{buildroot}%{_cross_fips_bindir}
 
 %cross_scan_attribution --clarify %{S:1000} go-vendor vendor
@@ -84,9 +89,11 @@ echo "SPDX-License-Identifier: Apache-2.0 AND MIT" >> %{buildroot}%{_cross_attri
 %{_cross_attribution_vendor_dir}
 
 %files bin
+%{_cross_bindir}/containerd-shim-runsc-v1
 %{_cross_bindir}/runsc
 
 %files fips-bin
+%{_cross_fips_bindir}/containerd-shim-runsc-v1
 %{_cross_fips_bindir}/runsc
 
 %changelog
