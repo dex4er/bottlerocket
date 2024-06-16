@@ -377,6 +377,7 @@ name = "containerd"
 version = "0.1.0"
 dependencies = [
  "glibc",
+ "gvisor",
  "pigz",
  "runc",
 ]
@@ -519,6 +520,13 @@ dependencies = [
 [[package]]
 name = "grub"
 version = "0.1.0"
+
+[[package]]
+name = "gvisor"
+version = "0.1.0"
+dependencies = [
+ "glibc",
+]
 
 [[package]]
 name = "host-ctr"

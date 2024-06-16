@@ -22,4 +22,5 @@ glibc = { path = "../glibc" }
 # RPM Requires
 [dependencies]
 runc = { path = "../runc" }
+gvisor = { path = "../gvisor" }
 pigz = { path = "../pigz" }

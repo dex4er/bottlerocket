@@ -1,0 +1,22 @@
+[package]
+name = "gvisor"
+version = "0.1.0"
+edition = "2021"
+publish = false
+build = "../build.rs"
+
+[lib]
+path = "../packages.rs"
+
+[[package.metadata.build-package.external-files]]
+url = "https://github.com/google/gvisor/archive/9437277bd1be6015d63a875d07dd2c5c137143f1.tar.gz"
+sha512 = "e860b1f9e2a9b998173736f8a732d9899a7086a7af90938f8ab6a7cdd0c87a2a46aa894e3eb7a8dafc014226a3fd5e9db2077f6849387e3ba80db3c5a4298843"
+bundle-modules = [ "go" ]
+
+# RPM BuildRequires
+[build-dependencies]
+glibc = { path = "../glibc" }
+
+# RPM Requires
+[dependencies]
+glibc = { path = "../glibc" }
