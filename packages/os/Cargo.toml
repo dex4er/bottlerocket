@@ -18,6 +18,7 @@ source-groups = [
     "imdsclient",
     "retry-read",
     "shimpei",
+    "shimpeis",
     "driverdog",
     "cfsignal",
     "bloodhound",

@@ -46,6 +46,14 @@ base_runtime_spec = "/etc/containerd/cri-base.json"
 SystemdCgroup = true
 BinaryName = "shimpei"
 
+[plugins."io.containerd.grpc.v1.cri".containerd.runtimes.shimpeis]
+runtime_type = "io.containerd.runc.v2"
+base_runtime_spec = "/etc/containerd/cri-base.json"
+
+[plugins."io.containerd.grpc.v1.cri".containerd.runtimes.shimpeis.options]
+SystemdCgroup = true
+BinaryName = "shimpeis"
+
 [plugins."io.containerd.grpc.v1.cri".cni]
 bin_dir = "/opt/cni/bin"
 conf_dir = "/etc/cni/net.d"

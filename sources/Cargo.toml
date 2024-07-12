@@ -127,6 +127,7 @@ members = [
     "constants",
 
     "shimpei",
+    "shimpeis",
 
     "xfscli",
 ]

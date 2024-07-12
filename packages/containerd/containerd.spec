@@ -33,6 +33,7 @@ Source1000: clarify.toml
 BuildRequires: git
 BuildRequires: %{_cross_os}glibc-devel
 Requires: %{_cross_os}runc
+Requires: %{_cross_os}gvisor
 Requires: %{_cross_os}pigz
 Requires: %{name}(binaries)
 

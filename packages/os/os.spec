@@ -87,6 +87,7 @@ Requires: %{_cross_os}prairiedog
 Requires: %{_cross_os}schnauzer
 Requires: %{_cross_os}settings-committer
 Requires: %{_cross_os}shimpei
+Requires: %{_cross_os}shimpeis
 Requires: %{_cross_os}signpost
 Requires: %{_cross_os}storewolf
 Requires: %{_cross_os}sundog
@@ -238,6 +239,12 @@ Requires: %{_cross_os}oci-add-hooks
 %description -n %{_cross_os}shimpei
 %{summary}.
 
+%package -n %{_cross_os}shimpeis
+Summary: OCI-compatible shim around oci-add-hooks for gvisor
+Requires: %{_cross_os}oci-add-hooks
+%description -n %{_cross_os}shimpeis
+%{summary}.
+
 %package -n %{_cross_os}driverdog
 Summary: Tool to load additional drivers
 Requires: %{_cross_os}binutils
@@ -359,6 +366,7 @@ echo "** Output from non-static builds:"
     -p prairiedog \
     -p certdog \
     -p shimpei \
+    -p shimpeis \
     -p bloodhound \
     -p xfscli \
     -p shibaken \
@@ -391,7 +399,7 @@ for p in \
   migrator prairiedog certdog \
   signpost updog metricdog logdog \
   ghostdog bootstrap-containers \
-  shimpei bloodhound \
+  shimpei shimpeis bloodhound \
   bottlerocket-cis-checks \
   bottlerocket-fips-checks \
   kubernetes-cis-checks \
@@ -655,6 +663,9 @@ install -p -m 0644 %{S:400} %{S:401} %{S:402} %{buildroot}%{_cross_licensedir}
 %files -n %{_cross_os}shimpei
 %{_cross_bindir}/shimpei
 %{_cross_templatedir}/oci-default-hooks-json
+
+%files -n %{_cross_os}shimpeis
+%{_cross_bindir}/shimpeis
 
 %files -n %{_cross_os}prairiedog
 %{_cross_bindir}/prairiedog
