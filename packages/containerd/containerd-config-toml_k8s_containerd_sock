@@ -46,8 +46,11 @@ base_runtime_spec = "/etc/containerd/cri-base.json"
 SystemdCgroup = true
 BinaryName = "shimpei"
 
+[plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runsc]
+runtime_type = "io.containerd.runsc.v1"
+  
 [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.shimpeis]
-runtime_type = "io.containerd.runc.v2"
+runtime_type = "io.containerd.runsc.v2"
 base_runtime_spec = "/etc/containerd/cri-base.json"
 
 [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.shimpeis.options]
